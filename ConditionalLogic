@@ -1,0 +1,13 @@
+// Declare the input and output signals
+wire in_a;
+wire in_b;
+wire out;
+
+// Implement the conditional logic operation
+always @(posedge clk) begin
+    if (in_a > in_b) begin
+        out <= 1'b1;
+    end else begin
+        out <= 1'b0;
+    end
+end
