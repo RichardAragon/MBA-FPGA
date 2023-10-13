@@ -1,0 +1,33 @@
+module MBA_FPGA_Config(
+    input clk,
+    input reset,
+    input [31:0] conditional_logic_parameters,
+    input conditional_logic_enable,
+    output conditional_logic_out
+);
+
+    // Declare the internal signals
+    reg [31:0] conditional_logic_parameter_1;
+    reg [31:0] conditional_logic_parameter_2;
+    reg conditional_logic_enable_mask;
+
+    // Implement the logic for configuring the MBA-FPGA Conditional Logic
+    always @(posedge clk) begin
+        if (reset) begin
+            conditional_logic_parameter_1 <= 0;
+            conditional_logic_parameter_2 <= 0;
+            conditional_logic_enable_mask <= 0;
+        end else begin
+            // Set the parameters of the Conditional Logic
+            conditional_logic_parameter_1 <= conditional_logic_parameters[31:16];
+            conditional_logic_parameter_2 <= conditional_logic_parameters[15:0];
+
+            // Enable and disable the Conditional Logic
+            conditional_logic_enable_mask <= conditional_logic_enable;
+        end
+    end
+
+    // Assign the output signals to the MBA-FPGA Conditional Logic
+    assign conditional_logic_out = conditional_logic_enable_mask ? conditional_logic_parameter_1 > conditional_logic_parameter_2 : 1'b0;
+
+endmodule
