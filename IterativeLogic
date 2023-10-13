@@ -1,0 +1,12 @@
+// Declare the input and output signals
+wire in;
+wire out;
+
+// Implement the iterative logic operation
+always @(posedge clk) begin
+    if (in == 1'b1) begin
+        out <= 1'b1;
+    end else begin
+        out <= out + 1'b1;
+    end
+end
