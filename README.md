@@ -40,3 +40,22 @@ Once the LLM model is running, it will be able to access the functionality that 
 **Conclusion**
 
 The MBA-FPGA is a powerful tool that can be used to improve the performance of LLMs on a wide range of business-related tasks. It is a valuable asset for any business that is using LLMs to improve its operations and to create new products and services.
+
+**This Repository Gets You One Step Short of Full Implementation**
+
+To make the MBA-FPGA compatible with transformer-based LLM models stored on a physical server via a PCI-E slot, you would need to do the following:
+
+Develop a PCI-E adapter that allows the MBA-FPGA to communicate with the transformer-based LLM model. This adapter would need to be specific to the type of transformer-based LLM model that you are using.
+Modify the MBA-FPGA firmware to support the new PCI-E adapter. This would involve adding new code to the firmware to handle the communication between the MBA-FPGA and the new PCI-E adapter.
+Re-program the MBA-FPGA with the new firmware.
+Connect the MBA-FPGA to the transformer-based LLM model using the PCI-E adapter.
+Once the MBA-FPGA is connected to the transformer-based LLM model, you would need to configure the MBA-FPGA to communicate with the transformer-based LLM model. This would involve setting the appropriate parameters in the MBA-FPGA firmware.
+
+Once the MBA-FPGA is configured, you would be able to use the MBA-FPGA to accelerate the performance of the transformer-based LLM model.
+
+Here are some additional considerations for making the MBA-FPGA compatible with transformer-based LLM models stored on a physical server via a PCI-E slot:
+
+Data format: The MBA-FPGA and the transformer-based LLM model need to use the same data format. This means that the MBA-FPGA needs to be able to convert the data format that the transformer-based LLM model expects to the data format that the MBA-FPGA expects.
+Communication protocol: The MBA-FPGA and the transformer-based LLM model need to use the same communication protocol. This means that the MBA-FPGA needs to be able to communicate with the transformer-based LLM model using the communication protocol that the transformer-based LLM model expects.
+Performance: The MBA-FPGA should not introduce any significant performance overhead to the transformer-based LLM model. This means that the MBA-FPGA should be able to communicate with the transformer-based LLM model quickly and efficiently.
+Making the MBA-FPGA compatible with transformer-based LLM models stored on a physical server via a PCI-E slot is a challenging task, but it is a worthwhile one. By making the MBA-FPGA compatible with transformer-based LLM models, you will make it more accessible to a wider range of users and you will be able to help businesses to improve the performance of their transformer-based LLM models.
