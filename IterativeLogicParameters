@@ -1,0 +1,30 @@
+module MBA_FPGA_Config(
+    input clk,
+    input reset,
+    input [31:0] iterative_logic_parameters,
+    input iterative_logic_enable,
+    output iterative_logic_out
+);
+
+    // Declare the internal signals
+    reg [31:0] iterative_logic_parameter_1;
+    reg iterative_logic_enable_mask;
+
+    // Implement the logic for configuring the MBA-FPGA Iterative Logic
+    always @(posedge clk) begin
+        if (reset) begin
+            iterative_logic_parameter_1 <= 0;
+            iterative_logic_enable_mask <= 0;
+        end else begin
+            // Set the parameters of the Iterative Logic
+            iterative_logic_parameter_1 <= iterative_logic_parameters[31:0];
+
+            // Enable and disable the Iterative Logic
+            iterative_logic_enable_mask <= iterative_logic_enable;
+        end
+    end
+
+    // Assign the output signals to the MBA-FPGA Iterative Logic
+    assign iterative_logic_out = iterative_logic_enable_mask ? iterative_logic_parameter_1 + 1'b1 : 1'b0;
+
+endmodule
