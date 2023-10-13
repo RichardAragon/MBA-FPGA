@@ -1,0 +1,24 @@
+module recursive_logic_parameters(
+    input clk,
+    input reset,
+    input [31:0] recursive_logic_parameters,
+    output [31:0] recursive_logic_parameters_out
+);
+
+    // Declare the internal signals
+    reg [31:0] recursive_logic_parameter_1;
+
+    // Implement the logic for configuring the Recursive Logic parameters
+    always @(posedge clk) begin
+        if (reset) begin
+            recursive_logic_parameter_1 <= 0;
+        end else begin
+            // Set the parameters of the Recursive Logic
+            recursive_logic_parameter_1 <= recursive_logic_parameters[31:0];
+        end
+    end
+
+    // Assign the output signals to the Recursive Logic parameters
+    assign recursive_logic_parameters_out = recursive_logic_parameter_1;
+
+endmodule
