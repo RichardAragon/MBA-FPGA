@@ -1,0 +1,41 @@
+module MBA_FPGA_Config(
+    input clk,
+    input reset,
+    input [31:0] recursive_logic_parameters,
+    input recursive_logic_enable,
+    output recursive_logic_out
+);
+
+    // Declare the internal signals
+    reg [31:0] recursive_logic_parameter_1;
+    reg recursive_logic_enable_mask;
+
+    // Implement the logic for configuring the MBA-FPGA Recursive Logic
+    always @(posedge clk) begin
+        if (reset) begin
+            recursive_logic_parameter_1 <= 0;
+            recursive_logic_enable_mask <= 0;
+        end else begin
+            // Set the parameters of the Recursive Logic
+            recursive_logic_parameter_1 <= recursive_logic_parameters[31:0];
+
+            // Enable and disable the Recursive Logic
+            recursive_logic_enable_mask <= recursive_logic_enable;
+        end
+    end
+
+    // Assign the output signals to the MBA-FPGA Recursive Logic
+    assign recursive_logic_out = recursive_logic_enable_mask ? (recursive_logic_parameter_1 == 1'b1 ? 1'b1 : recursive_logic(recursive_logic_parameter_1 - 1'b1)) : 1'b0;
+
+    // Recursive function
+    function recursive_logic;
+        input [31:0] in;
+
+        if (in == 1'b1) begin
+            return 1'b1;
+        end else begin
+            return recursive_logic(in - 1'b1);
+        end
+    endfunction
+
+endmodule
